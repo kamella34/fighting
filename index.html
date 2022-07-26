@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="./node_modules/nes.css/css/nes.min.css">
+    <link type="text/css" rel="stylesheet" href="style.css">
+    <title>Fighting surface</title>
+</head>
+
+<body class="nes-pointer">
+
+    <div class="menu">
+        <section class="section-arcade">
+            <div class="arcade"></div>
+        </section>
+        <section class="accueil">
+            
+            <article class="nes-container with-title is-centered is-dark container1 container-menu">
+                <p class="title">Status</p>
+                <p class="status-bar pp-status1"></p>
+            </article>
+            <article class="art-score-table game">
+                <div class="nes-table-responsive">
+                    <table class="nes-table is-bordered is-dark">
+                        <thead>
+                            <tr>
+                                <th>Auteur</th>
+                                <th>Scores</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>nom du jouer</td>
+                                <td>score du joueur</td>
+                            </tr>
+                            <tr>
+                                <td>nom du jouer</td>
+                                <td>score du joueur</td>
+                            </tr>
+                            <tr>
+                                <td>nom du jouer</td>
+                                <td>score du joueur</td>
+                            </tr>
+                            <tr>
+                                <td>nom du jouer</td>
+                                <td>score du joueur</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="nes-btn is-warning btn-retour-menu-score">Retour au menu</button>
+            </article>
+            <article class="art-credit-table game">
+                <div class="nes-table-responsive">
+                    <table class="nes-table is-bordered is-dark">
+                        <thead>
+                            <tr>
+                                <th>Auteur</th>
+                                <th>Asset</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>nom du jouer</td>
+                                <td>nom de l'ennemi</td>
+                            </tr>
+                            <tr>
+                                <td>nom du jouer</td>
+                                <td>nom de l'ennemi</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" class="nes-btn is-warning btn-retour-menu-credit">Retour au menu</button>
+            </article>
+
+
+            <!-- ____________________le hero est mort_________________________________________ -->
+            <article class="nes-container with-title is-centered is-dark art-pseudo-enter game" >
+                <p class="title ">Entrez votre pseudo</p>
+                <p class="pp-enter-name">Score</p>
+                <p class="status-bar pp-status3 pp-enter-name">10</p>
+                <div style="background-color:#212529; padding: 1rem;" class="nes-field is-inline">
+                    <input type="text" id="dark_field" class="nes-input is-dark input-pseudo" placeholder="...Pseudo...">
+                </div>
+                <div>  
+                    <button type="button" class="nes-btn is-error btn-quitter">Quitter</button>
+                    <button type="button" class="nes-btn is-success btn-envoyer">Envoyer</button>
+                  
+                </div>
+            </article>
+            
+
+            <!-- _____________________________________________________________ -->
+        </section>
+
+
+
+    </div>
+
+
+
+
+
+    <div class="header-jouer game">
+        <article class="history">
+          
+        </article>
+        <div class="div-container">
+            <article class="nes-container with-title is-centered is-dark container2">
+                <p class="title">Status</p>
+                <p class="status-bar pp-status2"></p>
+            </article>
+        </div>
+    </div>
+
+    <div class="jouer game">
+        <section class="allies">
+            <article class="action">
+                <button type="button" class="nes-btn is-disabled  attack-js">Attack</button>
+                <!-- Doit être gris par default une fois 5 attaque si le combat est encore ok alors il est activé-->
+                <button type="button" class="nes-btn is-disabled special-js">Special</button>
+            </article>
+            <article class="action2">
+                <h2 class="allies-pp"></h2>
+                <img src="img/fighter.png" alt="">
+            </article>
+            <article class="life-bar">
+                <label for="allies-bar">Point de vie</label>
+                <progress class="nes-progress is-success" id="allies-bar" max="100" value="70"> 70% </progress>
+            </article>
+        </section>
+        <section class="turn-arrow">
+            <img src="img/arrow.png" alt="">
+        </section>
+        <section class="enemy">
+            <article>
+                <button type="button" class="nes-btn is-warning enemies-generator ">Genere un
+                    adversaire</button>
+            </article>
+            <article class="disable">
+                <h2 class="enemy-title"></h2>
+                <img src="" alt="" class="enemy-pp">
+            </article>
+            <article class="life-bar disable">
+                <label for="enemy-bar">Point de vie</label>
+                <progress class="nes-progress is-success" id="enemy-bar" max="100" value="70">
+                    <p>70%</p>
+                </progress>
+            </article>
+        </section>
+    </div>
+
+
+
+    <script type="module" src="main.js"></script>
+</body>
+
+</html>

@@ -9,7 +9,7 @@
 }
 
 
-@media (min-width: 1500px) {
+@media (min-width: 1000px) {
 
     @keyframes scale-up-center {
         0% {
@@ -26,6 +26,7 @@
     .scale-up-center {
         animation: scale-up-center 7s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
     }
+
 
 
     body {
@@ -83,7 +84,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 3rem;
+       
     }
 
     .art-credit-table {
@@ -110,36 +111,39 @@
         display: none !important;
     }
 
-  
 
-    .header-jouer{
+    .header-jouer {
         position: absolute;
         top: 1%;
-        left:32%;
+        left: 32%;
+        z-index: 5;
     }
 
-  .allies{
-    padding-right: 3rem;
-  }
-  .enemy{
-    padding-left: 3rem;
-  }
+    .allies {
+        padding-right: 3rem;
+    }
+
+    .enemy {
+        padding-left: 3rem;
+    }
+
     .allies,
-    .enemy{
+    .enemy {
         text-align: center;
         align-self: end;
     }
 
     .div-container {
-        margin-top: 10rem;
+        margin-top: 5rem;
         display: flex;
-        position: fixed;
-        
+        margin-left: -2rem;
     }
 
-  
-s
-    .pp-enter-name{
+    .art-pseudo-enter {
+        margin-top: 2rem;
+    }
+
+    .pp-enter-name {
         font-size: 14px;
     }
 
@@ -148,9 +152,15 @@ s
         text-shadow: 0 0 5px black;
     }
 
-    .life-bar{
-       width: 20rem;
+    .life-bar {
+        width: 20rem;
     }
+
+    .container1{
+    margin-top: 2rem !important;
+    width:15rem;
+    }
+
     .container2 {
         width: 41rem;
     }
@@ -160,7 +170,7 @@ s
         flex-direction: row;
         position: absolute;
         top: 40%;
-        left: 25%;
+        left: 22%;
     }
 
     .allies img,
@@ -275,6 +285,10 @@ s
 
     }
 
+    .art-pseudo-enter {
+        margin-top: 5rem !important;
+    }
+
 
     .nes-btn {
         margin: 0.6rem;
@@ -284,6 +298,12 @@ s
         width: 32rem;
 
     }
+
+    .container2 {
+        margin-top: 10rem !important;
+        margin-left: 13rem !important;
+    }
+
     .art-btn-accueil {
         display: flex;
         flex-direction: column;
@@ -309,16 +329,16 @@ s
         flex-direction: column;
         align-items: center;
     }
-    
+
     .jouer {
         display: flex;
         align-items: center;
         position: absolute;
         top: 40%;
-        left: 30%;
+        left: 27%;
     }
 
-
+   
     /* ------------------------------------------------------------------------------ */
 
     h2,
@@ -326,6 +346,9 @@ s
         text-shadow: 0 0 5px black;
     }
 
+    .allies-pp{
+        margin-top: 2rem;
+    }
 
     .allies,
     .enemy {
@@ -338,6 +361,13 @@ s
 
     .allies {
         align-content: flex-start;
+        justify-content: center;
+    }
+
+    .enemy{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .allies img,

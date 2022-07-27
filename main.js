@@ -56,14 +56,16 @@ let ppEnterName;
 
 let artHistory;
 let imgHistory;
+let nbrImageHistory;
 
+nbrImageHistory = document.querySelectorAll(".nbrImg");
 imgHistory = document.querySelector(".dead-enemy");
 artHistory = document.querySelector(".history");
 
 
-containerMenu= document.querySelector(".container-menu");
+containerMenu = document.querySelector(".container-menu");
 ppEnterName = document.querySelectorAll(".pp-enter-name");
-artPseudoEnter= document.querySelector(".art-pseudo-enter");
+artPseudoEnter = document.querySelector(".art-pseudo-enter");
 btnSend = document.querySelector(".btn-envoyer");
 btnQuit = document.querySelector(".btn-quitter");
 btnAccueil = document.querySelectorAll(".btn-accueil");
@@ -119,10 +121,6 @@ statusBar1.textContent = "Bienvenue dans Fighting Surface";
 statusBar2.textContent = "Cliquez sur le bouton pour commencer la partie !";
 
 
-
-
-
-
 /**
  * ! SUITE
  * TODO: Evenement pour gerer le bouton play du menu
@@ -131,7 +129,6 @@ statusBar2.textContent = "Cliquez sur le bouton pour commencer la partie !";
 function vanishBorne() {
   arcade.classList.add("scale-up-center");
   accueil.classList.add("game");
-
 }
 
 
@@ -142,6 +139,8 @@ btnJouer.addEventListener("click", function () {
     jouer.classList.remove("game");
   }, 3000);
 })
+
+
 
 
 /**
@@ -161,17 +160,13 @@ function otherMenuDisplay() {
   btnCredit.classList.add("game");
 };
 // -------------------------------quand le hero meurt-------------------------------------
-if (hero.isDead() == true){
-  headerJouer.classList.add("game");
-  jouer.classList.add("game");
-  console.log("nbr d images "+`${imgHistory}`.length);
-}
 
 
 btnQuit.addEventListener("click", function () {
   articleBtnAccueil.classList.remove("game");
   containerMenu.classList.remove("game");
   artPseudoEnter.classList.add("game");
+  location.reload();
 });
 
 /**
@@ -256,48 +251,45 @@ attackBtn.addEventListener("click", function () {
 
   } else {
     console.log("vous ne pouvez pas attaquer")
-
   }
-
-  
 });
 
-  /**
-   * TODO: Evenement qui gère le spécial
-   *
-   */
-  specialBtn.addEventListener("click", function () {
-    if (special === true) {
-      if (actualTurn === true && hero.isDead() === false && canAttack === true) {
-        // canAttack = false;
-        hero.specialAttack(actualEnemy);
-        howMuchAttack = 0;
-        changeArrowDirection();
-        special = false;
-      }
-
-      setTimeout(function () {
-
-        if (actualEnemy.isDead() === false && hero.isDead() === false) {
-          actualEnemy.attack(hero);
-          changeArrowDirection("allies");
-
-        } else if (actualEnemy.isDead() === true) {
-          hero.healByVictory();
-          addMonsterInDeadZone(actualEnemy);
-          actualEnemy = generateEnemy(enemiesList);
-          newRound();
-        } else {
-
-        }
-        canAttack = true;
-      }, 2000);
-
-    } else {
-      changeMessageStatus("Le spécial n'est pas encore prêt !")
+/**
+ * TODO: Evenement qui gère le spécial
+ *
+ */
+specialBtn.addEventListener("click", function () {
+  if (special === true) {
+    if (actualTurn === true && hero.isDead() === false && canAttack === true) {
+      // canAttack = false;
+      hero.specialAttack(actualEnemy);
+      howMuchAttack = 0;
+      changeArrowDirection();
+      special = false;
     }
 
-  });
+    setTimeout(function () {
+
+      if (actualEnemy.isDead() === false && hero.isDead() === false) {
+        actualEnemy.attack(hero);
+        changeArrowDirection("allies");
+
+      } else if (actualEnemy.isDead() === true) {
+        hero.healByVictory();
+        addMonsterInDeadZone(actualEnemy);
+        actualEnemy = generateEnemy(enemiesList);
+        newRound();
+      } else {
+
+      }
+      canAttack = true;
+    }, 2000);
+
+  } else {
+    changeMessageStatus("Le spécial n'est pas encore prêt !")
+  }
+
+});
 /**
  * TODO: Evènement qui ajoute un enemy et lance une manche 
  */
@@ -321,7 +313,7 @@ function beginTheGame() {
   //*Le bug ce trouve ici, il manquais un argument, le chemin vers l'image
   //*Le code pourrait être améliorer, il y a des soucis dans l'organisation selon moi
   if (!isItNullOrUndefined(hero)) {
-    hero = new Allies("Jeanjean", 100, 60, 3, "");
+    hero = new Allies("Jeanjean",0, 60, 3, "");
     hero.statusInit();
   }
 }
@@ -438,5 +430,10 @@ function changeColorSpecial() {
 /**
  * Mettre en place un pierre feuille sciseaux, 
  */
+
+
+
+ 
+  console.log("nbr d images " + `${imgHistory}`.length);
 
 

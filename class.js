@@ -74,19 +74,18 @@ class Entity {
         this.setName();
         this.setPp();
     }
-
-
 }
 
 class Enemy extends Entity {
-    constructor(name = "le clone", life = 80, att = 10, def = 2, imgPath = "img/barzork_clone.png", nameSelector) {
-        super(name, life, att, def, imgPath, nameSelector);
+    constructor(name = "le clone", life = 80, att = 10, def = 2, score = 10, imgPath = "img/barzork_clone.png") {
+        super(name, life, att, def, imgPath);
         this.lifeBar = document.querySelector("#enemy-bar");
         this.status = 0;
-        this.nameSelector = ".enemy-title"
+        this.score = score;
     }
+
     setName() {
-        let title = document.querySelector(this.nameSelector);
+        let title = document.querySelector(".enemy-title");
         title.textContent = `Barzork ${this.name}`;
     }
 
@@ -134,6 +133,8 @@ class Enemy extends Entity {
             return false;
         }
     }
+
+   
 }
 class Allies extends Entity {
     constructor(name, life, att, def, nameSelector) {
@@ -155,7 +156,7 @@ class Allies extends Entity {
         let articleBtnAccueil = document.querySelector(".art-btn-accueil");
         let containerMenu = document.querySelector(".container-menu");
         let arcade = document.querySelector(".arcade");
-
+        let  ppEnterScore = document.querySelector(".pp-enter-score");
         // .scale-up-center       
         if (this.life <= 0) {
 
@@ -172,7 +173,7 @@ class Allies extends Entity {
                 artPseudoEnter.classList.remove("game");
                 containerMenu.classList.add("game");
                 arcade.classList.remove("scale-up-center");
-                
+                // ppEnterScore.textContent = score;
             }, 4000, );
             return true;
         } else {
@@ -188,7 +189,6 @@ class Allies extends Entity {
         if (this.life > 0) {
             changeMessageStatus("Vous lancer une attaque venus des enfer");
             enemy.life -= specialAttack;
-
         }
 
         enemy.changeLifeStatus();

@@ -19,7 +19,7 @@ let special = false;
 //Les entités
 let hero = null;
 let actualEnemy;
-
+let score =0;
 /**
  * SELECTEUR DE BASES
  */
@@ -52,7 +52,7 @@ let artScoreTable;
 let headerJouer;
 let artPseudoEnter;
 let containerMenu;
-let ppEnterName;
+let ppEnterScore;
 
 let artHistory;
 let imgHistory;
@@ -62,9 +62,8 @@ nbrImageHistory = document.querySelectorAll(".nbrImg");
 imgHistory = document.querySelector(".dead-enemy");
 artHistory = document.querySelector(".history");
 
-
 containerMenu = document.querySelector(".container-menu");
-ppEnterName = document.querySelectorAll(".pp-enter-name");
+ppEnterScore = document.querySelector(".pp-enter-score");
 artPseudoEnter = document.querySelector(".art-pseudo-enter");
 btnSend = document.querySelector(".btn-envoyer");
 btnQuit = document.querySelector(".btn-quitter");
@@ -160,7 +159,18 @@ function otherMenuDisplay() {
   btnCredit.classList.add("game");
 };
 // -------------------------------quand le hero meurt-------------------------------------
+let inputPseudo;
+let btnEnvoyer;
+btnEnvoyer = document.querySelector(".btn-envoyer");
+inputPseudo = document.querySelector(".input-pseudo");
 
+btnEnvoyer.addEventListener("click",function(){
+
+    console.log(score);
+    console.log("blabla")
+   
+     });
+    
 
 btnQuit.addEventListener("click", function () {
   articleBtnAccueil.classList.remove("game");
@@ -219,6 +229,13 @@ btnRetourMenuCredit.addEventListener("click", function () {
  */
 attackBtn.addEventListener("click", function () {
 
+  if (hero.isDead()){
+     ppEnterScore.textContent = score;
+    console.log("dead");
+  }else{
+    console.log("notdead");
+  }
+
   if (actualTurn === true && hero.isDead() === false && canAttack === true) {
     canAttack = false;
     statusBar2.textContent = "Vous allez affronter  "
@@ -242,6 +259,8 @@ attackBtn.addEventListener("click", function () {
       } else if (actualEnemy.isDead() === true) {
         hero.healByVictory();
         addMonsterInDeadZone(actualEnemy);
+        score += actualEnemy.score;
+        console.log("SCORE :", score);
         actualEnemy = generateEnemy(enemiesList);
         newRound();
       }
@@ -259,6 +278,9 @@ attackBtn.addEventListener("click", function () {
  *
  */
 specialBtn.addEventListener("click", function () {
+  if (hero.isDead()){
+    ppEnterScore.textContent = score};
+
   if (special === true) {
     if (actualTurn === true && hero.isDead() === false && canAttack === true) {
       // canAttack = false;
@@ -278,6 +300,8 @@ specialBtn.addEventListener("click", function () {
         hero.healByVictory();
         addMonsterInDeadZone(actualEnemy);
         actualEnemy = generateEnemy(enemiesList);
+        score += actualEnemy.score;
+        console.log("SCORE-special:"+score);
         newRound();
       } else {
 
@@ -313,7 +337,7 @@ function beginTheGame() {
   //*Le bug ce trouve ici, il manquais un argument, le chemin vers l'image
   //*Le code pourrait être améliorer, il y a des soucis dans l'organisation selon moi
   if (!isItNullOrUndefined(hero)) {
-    hero = new Allies("Jeanjean",0, 60, 3, "");
+    hero = new Allies("Jeanjean",30, 60, 3, "");
     hero.statusInit();
   }
 }
@@ -351,6 +375,9 @@ function removeOrAddAttack(action = "", special = false) {
  */
 
 function changeArrowDirection(direction = "") {
+  if (hero.isDead()){
+    ppEnterScore.textContent = score}
+
   if (direction === "allies") {
     console.log("Dans change Arrow Direction: Tour du héro");
     if (arrowSelector.classList.contains("quick-allies-turn")) {
@@ -382,13 +409,15 @@ function changeArrowDirection(direction = "") {
 function newRound() {
 
   let rand = randomNumber();
-  rand = 49;
+
+  console.log("RANDOM :"+randomNumber());
+
   if (rand <= 50) {
     changeMessageStatus("c'est vous qui commencer");
     changeArrowDirection("allies");
     //Changin color of btn
     changeColorSpecial();
-
+    
   } else {
     changeMessageStatus("c'est l'ennemis qui commence");
     changeArrowDirection();
@@ -396,6 +425,7 @@ function newRound() {
       actualEnemy.attack(hero);
       changeArrowDirection("allies");
       changeColorSpecial();
+   
     }, 3000);
 
   }
@@ -434,6 +464,6 @@ function changeColorSpecial() {
 
 
  
-  console.log("nbr d images " + `${imgHistory}`.length);
+  
 
 

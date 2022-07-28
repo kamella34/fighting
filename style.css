@@ -9,7 +9,6 @@
 }
 
 
-@media (min-width: 1000px) {
 
     @keyframes scale-up-center {
         0% {
@@ -28,6 +27,7 @@
     }
 
 
+    @media (min-width: 1000px) {
 
     body {
         background-image: url("img/background_plaine.jpg");
